@@ -11,6 +11,8 @@ public class Requirements : MonoBehaviour
 
     public int[][] jaggedArray2dOfInt;
     public int[][][] jaggedArray3dOfInt;
+
+    public LayerMask layerMask;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,25 @@ public class Requirements : MonoBehaviour
         TestArray();
         TestJaggedArray2D();
         TestJaggedArray3D();
+        TestRaycast();
+    }
+
+    private void TestRaycast()
+    {
+        Vector3 origin = Vector3.zero;
+        Vector3 direction = Vector3.up;
+        float length = 2;
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(origin, direction, out hit, length, layerMask))
+        {
+            Debug.DrawRay(origin, direction * hit.distance, Color.green);
+        }
+        else
+        {
+            Debug.DrawRay(origin, direction * length, Color.red);
+        }
     }
 
     private void TestJaggedArray3D()
