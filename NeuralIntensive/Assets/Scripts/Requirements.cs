@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Requirements : MonoBehaviour
+public class Requirements : MonoBehaviour, IComparable<Requirements>
 {
     #region Variables
     public List<int> listOfInt;
@@ -13,7 +13,21 @@ public class Requirements : MonoBehaviour
     public int[][][] jaggedArray3dOfInt;
 
     public LayerMask layerMask;
+
+    public int fitness;
     #endregion
+    
+    public int CompareTo(Requirements other)
+    {
+        if (fitness < other.fitness)
+            return 1;
+
+        if(fitness > other.fitness)
+            return -1;
+
+        return 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
