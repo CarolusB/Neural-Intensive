@@ -9,7 +9,7 @@ public class Agent : MonoBehaviour, IComparable<Agent>
     public float fitness;
     public float distanceTraveled;
 
-    Rigidbody rb;
+    public Rigidbody rb;
 
     float[] inputs;
 
