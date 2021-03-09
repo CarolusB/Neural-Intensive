@@ -8,10 +8,10 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.transform.parent.GetComponent<Agent>())
-        //{
-        //    if (other.transform.parent.GetComponent<Agent>.nextCheckpoint == transform)
-        //        other.transform.parent.GetComponent<Agent>.CheckpointReached(nextCheckpoint);
-        //}
+        if (other.transform.parent.GetComponent<Agent>())
+        {
+            if (other.transform.parent.GetComponent<Agent>().nextCheckpoint == transform)
+                other.transform.parent.GetComponent<Agent>().CheckpointReached(nextCheckpoint);
+        }
     }
 }

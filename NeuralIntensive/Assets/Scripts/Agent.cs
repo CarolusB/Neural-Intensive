@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Agent : MonoBehaviour
+public class Agent : MonoBehaviour, IComparable<Agent>
 {
     public NeuralNetwork net;
     public CarController carController;
@@ -38,6 +38,7 @@ public class Agent : MonoBehaviour
     {
         InputUpdate();
         OutputUpdate();
+        FitnessUpdate();
     }
 
     private void InputUpdate()
@@ -63,9 +64,20 @@ public class Agent : MonoBehaviour
         carController.verticalInput = net.neurons[net.layers.Length - 1][1];
     }
 
+    float currentDistance;
+    void FitnessUpdate()
+    {
+        currentDistance = distanceTraveled + (nextCheckpointDist - (transform.position - nextCheckpoint.position).magnitude);
+
+        if (fitness < currentDistance)
+        {
+            fitness = currentDistance;
+        }
+    }
+
     RaycastHit hit;
     float range = 4;
-    LayerMask layerMask;
+    public LayerMask layerMask;
     float hitDegree;
     float RaySensor(Vector3 pos, Vector3 direction, float length)
     {
@@ -81,5 +93,46 @@ public class Agent : MonoBehaviour
             Debug.DrawRay(pos, direction * length, Color.red);
             return 0;
         }
+    }
+
+    public void CheckpointReached(Transform checkpoint)
+    {
+        distanceTraveled += nextCheckpointDist;
+        nextCheckpoint = checkpoint;
+        nextCheckpointDist = (transform.position - checkpoint.position).magnitude;
+    }
+
+    public Renderer render;
+    public Material firstMaterial;
+    public Material mutatedMaterial;
+    public Material defaultMaterial;
+    public void SetFirstMaterial()
+    {
+        render.materials[0] = firstMaterial;
+    }
+
+    public void SetMutatedMaterial()
+    {
+        render.materials[0] = mutatedMaterial;
+    }
+
+    public void SetDefaultMaterial()
+    {
+        render.materials[0] = defaultMaterial;
+    }
+
+    public int CompareTo(Agent other)
+    {
+        if(fitness < other.fitness)
+        {
+            return 1;
+        }
+        
+        if(fitness> other.fitness)
+        {
+            return -1;
+        }
+
+        return 0;
     }
 }
