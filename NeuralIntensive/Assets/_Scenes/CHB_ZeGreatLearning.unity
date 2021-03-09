@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 54551812}
   - component: {fileID: 54551811}
+  - component: {fileID: 54551813}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -172,6 +173,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &54551813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54551810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3919a984bb1f40408ef2377551e812e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationSize: 0
+  trainingDuration: 30
+  mutationRate: 5
+  agentPrefab: {fileID: 0}
+  agentGroup: {fileID: 0}
+  cameraController: {fileID: 0}
 --- !u!4 &59211060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -994421424388088966, guid: 51494eed47030d8458af6fe6c50f21fd, type: 3}
@@ -1821,7 +1840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -44.899998}
+  m_LocalPosition: {x: 0, y: 1, z: -3.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1840,8 +1859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2115717444}
-  cameraLocalPosition: {x: 0, y: 0, z: 0}
-  localTargetLocalPosition: {x: 0, y: 0, z: 0}
+  cameraLocalPosition: {x: 0, y: 0.9, z: -4.35}
+  localTargetLocalPosition: {x: 0, y: 0.2, z: 0.6}
   positionLerpSpeed: 0.0012
   lookLerpSpeed: 0.015
 --- !u!4 &999307623 stripped
@@ -2245,12 +2264,46 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228999803}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab5de24494c8831408c144f56c230cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 1228999804}
+--- !u!23 &1228999807 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 51494eed47030d8458af6fe6c50f21fd, type: 3}
+  m_PrefabInstance: {fileID: 2115717443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1228999809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228999803}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d529d4b314af134e8edc1d53c251fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  net:
+    layers: 08000000080000000800000002000000
+    x: 0
+    y: 0
+    z: 0
+  carController: {fileID: 1228999804}
+  fitness: 0
+  distanceTraveled: 0
+  nextCheckpoint: {fileID: 0}
+  nextCheckpointDist: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  render: {fileID: 1228999807}
+  firstMaterial: {fileID: 2100000, guid: 506c0b0d470640046b762d80c28798b9, type: 2}
+  mutatedMaterial: {fileID: 2100000, guid: c65ce022f31de9c4a9c54a5d8291e073, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 24a847bfb95e1f34784430bb95fcca60, type: 2}
 --- !u!1 &1229067545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,7 +3131,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.72, y: 0.57, z: 2.53}
+  m_Size: {x: 0.7, y: 0.52, z: 2.53}
   m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!1 &1863876291 stripped
 GameObject:
