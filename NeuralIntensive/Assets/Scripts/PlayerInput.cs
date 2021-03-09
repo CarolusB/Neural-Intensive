@@ -10,6 +10,6 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         carController.horizontalInput = Input.GetAxis("Horizontal");
-        carController.verticalInput = Input.GetAxis("Vertical");
+        carController.verticalInput = - Input.GetAxis("Vertical");
     }
 }

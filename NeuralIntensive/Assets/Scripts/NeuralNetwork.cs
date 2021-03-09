@@ -56,4 +56,59 @@ public class NeuralNetwork
         }
     }
 
+    float value;
+    public void FeedForward(float[] inputs)
+    {
+        neurons[0] = inputs;
+        for (x = 1; x < layers.Length; x++)
+        {
+            for (y = 0; y < layers[x]; y++)
+            {
+                value = 0;
+
+                for (z = 0; z < layers[x-1]; z++)
+                {
+                    value += neurons[x - 1][z] * axons[x - 1][y][z];
+                }
+
+                neurons[x][y] = (float) Math.Tanh(value);
+            }
+        }
+    }
+
+    float randNum;
+    public void Mutate(float probability)
+    {
+        for (x = 0; x < axons.Length; x++)
+        {
+            for (y = 0; y < axons[x].Length; y++)
+            {
+                for (z = 0; z < axons[x][y].Length; z++)
+                {
+                    randNum = UnityEngine.Random.Range(0f, 100f);
+
+                    if(randNum < 0.06f * probability)
+                    {
+                        axons[x][y][z] = UnityEngine.Random.Range(-1f, 1f);
+                    }
+                    else if(randNum < 0.07f * probability)
+                    {
+                        axons[x][y][z] *= -1f;
+                    }
+                    else if(randNum < 0.5f * probability)
+                    {
+                        axons[x][y][z] = 0.1f*UnityEngine.Random.Range(-1f, 1f);
+                    }
+                    else if(randNum < 0.75f * probability)
+                    {
+                        axons[x][y][z] *= UnityEngine.Random.Range(0f, 1f) + 1f;
+                    }
+                    else if(randNum < 1 * probability)
+                    {
+                        axons[x][y][z] *= UnityEngine.Random.Range(0f, 1f);
+                    }
+                }
+            }
+        }
+    }
 }
