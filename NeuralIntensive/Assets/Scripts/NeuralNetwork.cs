@@ -13,6 +13,20 @@ public class NeuralNetwork
     public NeuralNetwork()
     {}
 
+    public void CopyNet(NeuralNetwork netCopy)
+    {
+        for (x = 0; x < netCopy.axons.Length; x++)
+        {
+            for (y = 0; y < axons[x].Length; y++)
+            {
+                for (z = 0; z < axons[x][y].Length; z++)
+                {
+                    axons[x][y][z] = netCopy.axons[x][y][z];
+                }
+            }
+        }
+    }
+
     public NeuralNetwork(int[] _layers)
     {
         layers = new int[_layers.Length];
