@@ -194,6 +194,37 @@ MonoBehaviour:
   agentPrefab: {fileID: 3990412846393277842, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
   agentGroup: {fileID: 1494810065}
   cameraController: {fileID: 963194229}
+  progSteps:
+  - setProportion: 0.402
+    numberOfCheckpoints: 1
+    timeAllowed: 5
+    wishedMutationRate: 20
+  - setProportion: 0.402
+    numberOfCheckpoints: 2
+    timeAllowed: 8
+    wishedMutationRate: 15
+  - setProportion: 0.363
+    numberOfCheckpoints: 3
+    timeAllowed: 10
+    wishedMutationRate: 15
+  - setProportion: 0.3
+    numberOfCheckpoints: 5
+    timeAllowed: 12
+    wishedMutationRate: 15
+  - setProportion: 0.3
+    numberOfCheckpoints: 8
+    timeAllowed: 17
+    wishedMutationRate: 10
+  - setProportion: 0.3
+    numberOfCheckpoints: 12
+    timeAllowed: 19
+    wishedMutationRate: 10
+  - setProportion: 0.3
+    numberOfCheckpoints: 16
+    timeAllowed: 25
+    wishedMutationRate: 5
+  currentProgStep: 0
+  numberAgentsReached: 0
 --- !u!114 &54551814
 MonoBehaviour:
   m_ObjectHideFlags: 0

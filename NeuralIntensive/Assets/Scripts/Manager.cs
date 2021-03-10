@@ -6,6 +6,8 @@ using System;
 
 public class Manager : MonoBehaviour
 {
+    public static Manager instance;
+
     public int populationSize;
     public float trainingDuration = 30;
     public float mutationRate = 5;
@@ -23,22 +25,28 @@ public class Manager : MonoBehaviour
     [Serializable]
     public class ProgressionRequirements
     {
-        [Range(20f, 70f)]
-        public float setProportion = 30;
+        [Range(0.2f, 0.7f)]
+        public float setProportion = 0.3f;
         public int numberOfCheckpoints = 1;
         public float timeAllowed = 5;
+        public float wishedMutationRate = 5;
     }
 
     public ProgressionRequirements[] progSteps;
-    int currentProgStep;
-
-    List<Agent> agentsReached = new List<Agent>();
+    public int currentProgStep;
+    public int numberAgentsReached;
     #endregion
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         currentProgStep = 0;
+        numberAgentsReached = 0;
+        SetAutoStepTrainingTimeAndMutation(currentProgStep);
         CheckpointManager.instance.Init();
         StartCoroutine(InitCoroutine());
     }
@@ -82,13 +90,42 @@ public class Manager : MonoBehaviour
         FocusCar();
     }
 
+    float reachedProportion;
     private void NewGeneration()
     {
+        reachedProportion = (float) numberAgentsReached / populationSize;
+
+        Debug.Log(numberAgentsReached + " agents or " + (float) reachedProportion * 100 + "% have passed " + progSteps[currentProgStep].numberOfCheckpoints + "checkpoint(s)");
+        
+        if(reachedProportion >= progSteps[currentProgStep].setProportion)
+        {
+            currentProgStep++;
+
+            if(currentProgStep < progSteps.Length)
+            {
+                SetAutoStepTrainingTimeAndMutation(currentProgStep);
+            }
+            else
+            {
+                trainingDuration = 70;
+                mutationRate = 5;
+            }
+            
+        }
+
+        numberAgentsReached = 0;
+
         agents.Sort();
         AddOrRemoveAgents();
         Mutate();
         Reset();
         SetMaterials();
+    }
+
+    void SetAutoStepTrainingTimeAndMutation(int _progStep)
+    {
+        trainingDuration = progSteps[_progStep].timeAllowed;
+        mutationRate = progSteps[_progStep].wishedMutationRate;
     }
 
     private void AddOrRemoveAgents()

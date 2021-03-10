@@ -15,6 +15,9 @@ public class Agent : MonoBehaviour, IComparable<Agent>
 
     public Transform nextCheckpoint;
     public float nextCheckpointDist;
+
+    //for training time automation
+    int numberCheckpointReached = 0;
     public void ResetAgent()
     {
         fitness = 0;
@@ -32,6 +35,7 @@ public class Agent : MonoBehaviour, IComparable<Agent>
 
         nextCheckpoint = CheckpointManager.instance.firstCheckpoint;
         nextCheckpointDist = (transform.position - nextCheckpoint.position).magnitude;
+        numberCheckpointReached = 0;
     }
 
     private void FixedUpdate()
@@ -100,6 +104,13 @@ public class Agent : MonoBehaviour, IComparable<Agent>
         distanceTraveled += nextCheckpointDist;
         nextCheckpoint = checkpoint;
         nextCheckpointDist = (transform.position - checkpoint.position).magnitude;
+
+        numberCheckpointReached++;
+
+        if(numberCheckpointReached == Manager.instance.progSteps[Manager.instance.currentProgStep].numberOfCheckpoints)
+        {
+            Manager.instance.numberAgentsReached++;
+        }
     }
 
     public Renderer render;
