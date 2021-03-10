@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &54551811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3252,18 +3252,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3990412846393277805, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3990412846393277842, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4296894218770203905, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
       propertyPath: m_Name
-      value: Car
+      value: CarTest
       objectReference: {fileID: 0}
     - target: {fileID: 4296894218770203905, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3990412845945273902, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
+    - {fileID: 3990412846393336840, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
+    - {fileID: 3990412846327828888, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
+    - {fileID: 3990412844440019100, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
+    - {fileID: 3990412845761646273, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
