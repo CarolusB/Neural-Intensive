@@ -19,10 +19,6 @@ public class Manager : MonoBehaviour
 
     public CameraController cameraController;
 
-    private void Awake()
-    {
-        
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +29,7 @@ public class Manager : MonoBehaviour
     IEnumerator InitCoroutine()
     {
         NewGeneration();
+        InitNeuralViewer();
         FocusCar();
         yield return new WaitForSeconds(trainingDuration);
 
@@ -56,6 +53,9 @@ public class Manager : MonoBehaviour
     
     private void FocusCar()
     {
+        NeuralNetworkViewer.instance.agent = agents[0];
+        NeuralNetworkViewer.instance.RefreshAxons();
+        
         cameraController.target = agents[0].transform;
     }
 
@@ -175,5 +175,10 @@ public class Manager : MonoBehaviour
         }
 
         End();
+    }
+
+    void InitNeuralViewer()
+    {
+        NeuralNetworkViewer.instance.Init(agents[0]);
     }
 }
