@@ -19,9 +19,26 @@ public class Manager : MonoBehaviour
 
     public CameraController cameraController;
 
+    #region Var for training time automation
+    [Serializable]
+    public class ProgressionRequirements
+    {
+        [Range(20f, 70f)]
+        public float setProportion = 30;
+        public int numberOfCheckpoints = 1;
+        public float timeAllowed = 5;
+    }
+
+    public ProgressionRequirements[] progSteps;
+    int currentProgStep;
+
+    List<Agent> agentsReached = new List<Agent>();
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
+        currentProgStep = 0;
         CheckpointManager.instance.Init();
         StartCoroutine(InitCoroutine());
     }
