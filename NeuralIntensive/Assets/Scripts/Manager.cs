@@ -19,6 +19,10 @@ public class Manager : MonoBehaviour
 
     public CameraController cameraController;
 
+    private void Awake()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,15 +47,31 @@ public class Manager : MonoBehaviour
 
         StartCoroutine(Loop());
     }
+    
+    public void End()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Loop());
+    }
+    
     private void FocusCar()
     {
         cameraController.target = agents[0].transform;
+    }
+
+    public void Refocus()
+    {
+        agents.Sort();
+        FocusCar();
     }
 
     private void NewGeneration()
     {
         agents.Sort();
         AddOrRemoveAgents();
+        Mutate();
+        Reset();
+        SetMaterials();
     }
 
     private void AddOrRemoveAgents()
@@ -81,6 +101,7 @@ public class Manager : MonoBehaviour
     {
         agent = Instantiate(agentPrefab, Vector3.zero, Quaternion.identity, agentGroup);
         agent.net = new NeuralNetwork(agentPrefab.net.layers);
+        agent.nextCheckpoint = CheckpointManager.instance.firstCheckpoint;
 
         agents.Add(agent);
     }
@@ -117,5 +138,42 @@ public class Manager : MonoBehaviour
         {
             agents[i].SetDefaultMaterial();
         }
+    }
+
+    public void ResetNets()
+    {
+        for (int i = 0; i < agents.Count; i++)
+        {
+            agents[i].net = new NeuralNetwork(agentPrefab.net.layers);
+        }
+
+        End();
+    }
+
+    public void Save()
+    {
+        List<NeuralNetwork> nets = new List<NeuralNetwork>();
+
+        for (int i = 0; i < agents.Count; i++)
+        {
+            nets.Add(agents[i].net);
+        }
+
+        DataManager.instance.Save(nets);
+    }
+
+    public void Load()
+    {
+        Data data = DataManager.instance.Load();
+
+        if(data != null)
+        {
+            for (int i = 0; i < agents.Count; i++)
+            {
+                agents[i].net = data.nets[i];
+            }
+        }
+
+        End();
     }
 }

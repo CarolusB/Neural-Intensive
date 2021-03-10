@@ -11,7 +11,7 @@ public class Agent : MonoBehaviour, IComparable<Agent>
 
     public Rigidbody rb;
 
-    float[] inputs;
+    float[] inputs = new float[8];
 
     public Transform nextCheckpoint;
     public float nextCheckpointDist;
@@ -108,17 +108,17 @@ public class Agent : MonoBehaviour, IComparable<Agent>
     public Material defaultMaterial;
     public void SetFirstMaterial()
     {
-        render.materials[0] = firstMaterial;
+        render.material = firstMaterial;
     }
 
     public void SetMutatedMaterial()
     {
-        render.materials[0] = mutatedMaterial;
+        render.material = mutatedMaterial;
     }
 
     public void SetDefaultMaterial()
     {
-        render.materials[0] = defaultMaterial;
+        render.material = defaultMaterial;
     }
 
     public int CompareTo(Agent other)
