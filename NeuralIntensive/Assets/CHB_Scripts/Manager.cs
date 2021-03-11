@@ -30,7 +30,7 @@ public class Manager : MonoBehaviour
     [Serializable]
     public class ProgressionRequirements
     {
-        [Range(0.2f, 0.7f)]
+        [Range(0.2f, 1.1f)]
         public float setProportion = 0.3f;
         public int numberOfCheckpoints = 1;
         public float timeAllowed = 5;
@@ -116,10 +116,9 @@ public class Manager : MonoBehaviour
 
             if (reachedProportion >= progSteps[currentProgStep].setProportion)
             {
-                currentProgStep++;
-
-                if (currentProgStep < progSteps.Length)
+                if (currentProgStep < progSteps.Length -1)
                 {
+                    currentProgStep++;
                     SetAutoStepTrainingTimeAndMutation(currentProgStep);
                 }
                 else

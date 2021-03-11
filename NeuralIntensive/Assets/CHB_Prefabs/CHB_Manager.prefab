@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1504477780987295128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504477780987295134}
+  - component: {fileID: 1504477780987295129}
+  - component: {fileID: 1504477780987295135}
+  - component: {fileID: 1504477780987295122}
+  - component: {fileID: 1504477780987295132}
+  - component: {fileID: 1504477780987295133}
+  m_Layer: 0
+  m_Name: CHB_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1504477780987295134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504477780987295128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1504477780987295129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504477780987295128}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e739da2faac0842428a39b75bfc81071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfInt: 
+  arrayOfInt: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  fitness: 0
+--- !u!114 &1504477780987295135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504477780987295128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3919a984bb1f40408ef2377551e812e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationSize: 100
+  trainingDuration: 45
+  mutationRate: 5
+  agentPrefab: {fileID: 3990412846393277842, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
+  agentGroup: {fileID: 0}
+  cameraController: {fileID: 0}
+  timeManipulator: {fileID: 1504477780987295122}
+  genCounter: {fileID: 0}
+  automatedTrainingMode: 1
+  progSteps:
+  - setProportion: 0.5
+    numberOfCheckpoints: 1
+    timeAllowed: 4
+    wishedMutationRate: 22
+  - setProportion: 0.5
+    numberOfCheckpoints: 2
+    timeAllowed: 6
+    wishedMutationRate: 15
+  - setProportion: 0.5
+    numberOfCheckpoints: 3
+    timeAllowed: 9
+    wishedMutationRate: 15
+  - setProportion: 0.4
+    numberOfCheckpoints: 5
+    timeAllowed: 12
+    wishedMutationRate: 10
+  - setProportion: 0.4
+    numberOfCheckpoints: 8
+    timeAllowed: 16.7
+    wishedMutationRate: 10
+  - setProportion: 0.4
+    numberOfCheckpoints: 12
+    timeAllowed: 19
+    wishedMutationRate: 10
+  - setProportion: 0.4
+    numberOfCheckpoints: 16
+    timeAllowed: 24
+    wishedMutationRate: 7
+  - setProportion: 0.3
+    numberOfCheckpoints: 21
+    timeAllowed: 28
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 24
+    timeAllowed: 31.5
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 29
+    timeAllowed: 35.5
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 33
+    timeAllowed: 40
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 38
+    timeAllowed: 48
+    wishedMutationRate: 5
+  - setProportion: 0.2
+    numberOfCheckpoints: 75
+    timeAllowed: 105
+    wishedMutationRate: 5
+  - setProportion: 1.1
+    numberOfCheckpoints: 112
+    timeAllowed: 160
+    wishedMutationRate: 5
+  currentProgStep: 0
+  numberAgentsReached: 0
+  generationCount: 0
+--- !u!114 &1504477780987295122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504477780987295128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4880f73f3909248428ba133ad1657a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScale: 1
+  timerValue: 0
+  timerText: {fileID: 0}
+--- !u!114 &1504477780987295132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504477780987295128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c2ce08d8a75574bb1654506f37c3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameExtend: 
+  path: C:\Users\c.bentein\Documents\Unity Projects\NeuralIntensive\Neural Intensive\NeuralIntensive\Assets\SaveNets
+--- !u!114 &1504477780987295133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504477780987295128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280c0b75a638b2244a0be1a4b822efef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  axonPrefab: {fileID: 7448395829244685047, guid: a5544fa75b47f1a46ac01be7c732ef9d, type: 3}
+  neuronPrefab: {fileID: 6385348408319133698, guid: 80d6cd3a0d763b54fb2765f35fbc0aaf, type: 3}
+  fitnessPrefab: {fileID: 4146189096587107207, guid: 396a634dd72b79a43baa40d885896b7f, type: 3}
+  viewerGroup: {fileID: 0}
+  layerSpacing: 120
+  neuronSpacing: 12
+  neuronDiameter: 25
+  neuronColorGradient:
+    serializedVersion: 2
+    key0: {r: 0.6603774, g: 0.021804927, b: 0.07330479, a: 1}
+    key1: {r: 0.04705883, g: 0.68235296, b: 0.003921569, a: 0.78431374}
+    key2: {r: 0, g: 0, b: 0, a: 0.3764706}
+    key3: {r: 0, g: 0, b: 0, a: 0.78431374}
+    key4: {r: 0, g: 0, b: 0, a: 1}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 19661
+    atime2: 32768
+    atime3: 45875
+    atime4: 65535
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 5
+  axonThickness: 2
+  axonColorGradient:
+    serializedVersion: 2
+    key0: {r: 0.6603774, g: 0.021804927, b: 0.07330479, a: 1}
+    key1: {r: 0.04705883, g: 0.68235296, b: 0.003921569, a: 0.78431374}
+    key2: {r: 0, g: 0, b: 0, a: 0.3764706}
+    key3: {r: 0, g: 0, b: 0, a: 0.78431374}
+    key4: {r: 0, g: 0, b: 0, a: 1}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 19661
+    atime2: 32768
+    atime3: 45875
+    atime4: 65535
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 5
