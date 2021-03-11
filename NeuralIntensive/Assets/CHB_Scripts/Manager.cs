@@ -111,9 +111,6 @@ public class Manager : MonoBehaviour
             Debug.Log("Gen " + generationCount + " -> "+ numberAgentsReached + " agents or " + 
             (float)reachedProportion * 100 + "% have passed " + progSteps[currentProgStep].numberOfCheckpoints + "checkpoint(s)");
 
-            generationCount++;
-            genCounter.text = generationCount.ToString();
-
             if (reachedProportion >= progSteps[currentProgStep].setProportion)
             {
                 if (currentProgStep < progSteps.Length -1)
@@ -128,7 +125,8 @@ public class Manager : MonoBehaviour
                 }
             }
         }
-
+        generationCount++;
+        genCounter.text = generationCount.ToString();
         timeManipulator.timerValue = trainingDuration;
 
         numberAgentsReached = 0;
