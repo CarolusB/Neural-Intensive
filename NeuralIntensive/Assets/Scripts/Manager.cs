@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 using System;
 
@@ -20,6 +21,8 @@ public class Manager : MonoBehaviour
     List<Agent> agents = new List<Agent>();
 
     public CameraController cameraController;
+    public TimeManipulator timeManipulator;
+    public Text genCounter;
 
     #region Var for training time automation
     [SerializeField] bool automatedTrainingMode = false;
@@ -37,8 +40,6 @@ public class Manager : MonoBehaviour
     public ProgressionRequirements[] progSteps;
     public int currentProgStep;
     public int numberAgentsReached;
-
-    public TimeManipulator timeManipulator;
     #endregion
 
     private void Awake()
@@ -50,6 +51,7 @@ public class Manager : MonoBehaviour
     {
         doAutomateTraining = automatedTrainingMode;
         currentProgStep = 0;
+        generationCount = 0;
         numberAgentsReached = 0;
 
         if(doAutomateTraining)
@@ -99,13 +101,18 @@ public class Manager : MonoBehaviour
     }
 
     float reachedProportion;
+    public int generationCount;
     private void NewGeneration()
     {
         if (doAutomateTraining)
         {
             reachedProportion = (float)numberAgentsReached / populationSize;
 
-            Debug.Log(numberAgentsReached + " agents or " + (float)reachedProportion * 100 + "% have passed " + progSteps[currentProgStep].numberOfCheckpoints + "checkpoint(s)");
+            Debug.Log("Gen " + generationCount + " -> "+ numberAgentsReached + " agents or " + 
+            (float)reachedProportion * 100 + "% have passed " + progSteps[currentProgStep].numberOfCheckpoints + "checkpoint(s)");
+
+            generationCount++;
+            genCounter.text = generationCount.ToString();
 
             if (reachedProportion >= progSteps[currentProgStep].setProportion)
             {
@@ -117,7 +124,7 @@ public class Manager : MonoBehaviour
                 }
                 else
                 {
-                    trainingDuration = 70;
+                    trainingDuration = 180;
                     mutationRate = 5;
                 }
             }
@@ -138,6 +145,9 @@ public class Manager : MonoBehaviour
     {
         trainingDuration = progSteps[_progStep].timeAllowed;
         mutationRate = progSteps[_progStep].wishedMutationRate;
+
+        Debug.Log("[Challenge " + _progStep + "] " + progSteps[_progStep].numberOfCheckpoints +
+        " CPs in " + progSteps[_progStep].timeAllowed + "s");
     }
 
     private void AddOrRemoveAgents()

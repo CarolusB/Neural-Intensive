@@ -9,6 +9,7 @@ using System;
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
+    public string nameExtend = string.Empty;
     public string path;
 
     XmlSerializer serializer = new XmlSerializer(typeof(Data));
@@ -22,7 +23,7 @@ public class DataManager : MonoBehaviour
 
     private void SetPath()
     {
-        path = Path.Combine(Application.persistentDataPath, "Data.xml");
+        path = Path.Combine(Application.persistentDataPath, "Data" + nameExtend + ".xml");
     }
 
     public void Save(List<NeuralNetwork> _nets)
