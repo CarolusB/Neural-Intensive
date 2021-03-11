@@ -194,34 +194,55 @@ MonoBehaviour:
   agentPrefab: {fileID: 3990412846393277842, guid: c553e74b1af60a745820a8ee948cfab6, type: 3}
   agentGroup: {fileID: 1494810065}
   cameraController: {fileID: 963194229}
+  automateTrainingMode: 1
   progSteps:
-  - setProportion: 0.402
+  - setProportion: 0.45
     numberOfCheckpoints: 1
-    timeAllowed: 5
-    wishedMutationRate: 20
-  - setProportion: 0.402
+    timeAllowed: 4
+    wishedMutationRate: 22
+  - setProportion: 0.4
     numberOfCheckpoints: 2
-    timeAllowed: 8
+    timeAllowed: 7.5
     wishedMutationRate: 15
-  - setProportion: 0.363
+  - setProportion: 0.4
     numberOfCheckpoints: 3
     timeAllowed: 10
     wishedMutationRate: 15
-  - setProportion: 0.3
+  - setProportion: 0.36
     numberOfCheckpoints: 5
     timeAllowed: 12
     wishedMutationRate: 15
-  - setProportion: 0.3
+  - setProportion: 0.36
     numberOfCheckpoints: 8
     timeAllowed: 17
     wishedMutationRate: 10
-  - setProportion: 0.3
+  - setProportion: 0.32
     numberOfCheckpoints: 12
     timeAllowed: 19
     wishedMutationRate: 10
-  - setProportion: 0.3
+  - setProportion: 0.32
     numberOfCheckpoints: 16
     timeAllowed: 25
+    wishedMutationRate: 7
+  - setProportion: 0.3
+    numberOfCheckpoints: 21
+    timeAllowed: 28
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 24
+    timeAllowed: 30
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 29
+    timeAllowed: 34
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 33
+    timeAllowed: 38
+    wishedMutationRate: 5
+  - setProportion: 0.3
+    numberOfCheckpoints: 38
+    timeAllowed: 45
     wishedMutationRate: 5
   currentProgStep: 0
   numberAgentsReached: 0

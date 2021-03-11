@@ -22,6 +22,8 @@ public class Manager : MonoBehaviour
     public CameraController cameraController;
 
     #region Var for training time automation
+    [SerializeField] bool automateTrainingMode = false;
+    bool doAutomateTraining;
     [Serializable]
     public class ProgressionRequirements
     {
@@ -44,9 +46,13 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        doAutomateTraining = automateTrainingMode;
         currentProgStep = 0;
         numberAgentsReached = 0;
-        SetAutoStepTrainingTimeAndMutation(currentProgStep);
+
+        if(doAutomateTraining)
+            SetAutoStepTrainingTimeAndMutation(currentProgStep);
+
         CheckpointManager.instance.Init();
         StartCoroutine(InitCoroutine());
     }
@@ -93,26 +99,28 @@ public class Manager : MonoBehaviour
     float reachedProportion;
     private void NewGeneration()
     {
-        reachedProportion = (float) numberAgentsReached / populationSize;
-
-        Debug.Log(numberAgentsReached + " agents or " + (float) reachedProportion * 100 + "% have passed " + progSteps[currentProgStep].numberOfCheckpoints + "checkpoint(s)");
-        
-        if(reachedProportion >= progSteps[currentProgStep].setProportion)
+        if (doAutomateTraining)
         {
-            currentProgStep++;
+            reachedProportion = (float)numberAgentsReached / populationSize;
 
-            if(currentProgStep < progSteps.Length)
+            Debug.Log(numberAgentsReached + " agents or " + (float)reachedProportion * 100 + "% have passed " + progSteps[currentProgStep].numberOfCheckpoints + "checkpoint(s)");
+
+            if (reachedProportion >= progSteps[currentProgStep].setProportion)
             {
-                SetAutoStepTrainingTimeAndMutation(currentProgStep);
+                currentProgStep++;
+
+                if (currentProgStep < progSteps.Length)
+                {
+                    SetAutoStepTrainingTimeAndMutation(currentProgStep);
+                }
+                else
+                {
+                    trainingDuration = 70;
+                    mutationRate = 5;
+                }
             }
-            else
-            {
-                trainingDuration = 70;
-                mutationRate = 5;
-            }
-            
         }
-
+        
         numberAgentsReached = 0;
 
         agents.Sort();
