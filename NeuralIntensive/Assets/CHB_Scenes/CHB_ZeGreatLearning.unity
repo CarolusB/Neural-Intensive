@@ -359,7 +359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &100732851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4757,6 +4757,10 @@ PrefabInstance:
     - target: {fileID: 1504477780987295128, guid: 2a44b2d7b23169e4782b19d5e83887ec, type: 3}
       propertyPath: m_Name
       value: CHB_Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504477780987295133, guid: 2a44b2d7b23169e4782b19d5e83887ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1504477780987295133, guid: 2a44b2d7b23169e4782b19d5e83887ec, type: 3}
       propertyPath: viewerGroup
