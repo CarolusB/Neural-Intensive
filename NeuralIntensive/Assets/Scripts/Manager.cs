@@ -22,7 +22,7 @@ public class Manager : MonoBehaviour
     public CameraController cameraController;
 
     #region Var for training time automation
-    [SerializeField] bool automateTrainingMode = false;
+    [SerializeField] bool automatedTrainingMode = false;
     bool doAutomateTraining;
     [Serializable]
     public class ProgressionRequirements
@@ -37,6 +37,8 @@ public class Manager : MonoBehaviour
     public ProgressionRequirements[] progSteps;
     public int currentProgStep;
     public int numberAgentsReached;
+
+    public TimeManipulator timeManipulator;
     #endregion
 
     private void Awake()
@@ -46,7 +48,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        doAutomateTraining = automateTrainingMode;
+        doAutomateTraining = automatedTrainingMode;
         currentProgStep = 0;
         numberAgentsReached = 0;
 
@@ -120,7 +122,9 @@ public class Manager : MonoBehaviour
                 }
             }
         }
-        
+
+        timeManipulator.timerValue = trainingDuration;
+
         numberAgentsReached = 0;
 
         agents.Sort();
@@ -209,6 +213,12 @@ public class Manager : MonoBehaviour
             agents[i].net = new NeuralNetwork(agentPrefab.net.layers);
         }
 
+        if (doAutomateTraining)
+        {
+            currentProgStep = 0;
+            SetAutoStepTrainingTimeAndMutation(currentProgStep);
+        }
+        
         End();
     }
 
@@ -236,6 +246,9 @@ public class Manager : MonoBehaviour
             }
         }
 
+        if(doAutomateTraining)
+            SetAutoStepTrainingTimeAndMutation(currentProgStep);
+        
         End();
     }
 
