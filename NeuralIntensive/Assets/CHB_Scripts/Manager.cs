@@ -118,11 +118,11 @@ public class Manager : MonoBehaviour
                     currentProgStep++;
                     SetAutoStepTrainingTimeAndMutation(currentProgStep);
                 }
-                else
-                {
-                    trainingDuration = 180;
-                    mutationRate = 5;
-                }
+                //else
+                //{
+                //    trainingDuration = 180;
+                //    mutationRate = 5;
+                //}
             }
         }
         generationCount++;
